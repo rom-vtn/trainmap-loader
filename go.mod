@@ -1,4 +1,4 @@
-module main
+module github.com/rom-vtn/trainmap-loader
 
 go 1.22.1
 

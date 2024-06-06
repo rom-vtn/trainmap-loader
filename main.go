@@ -2,28 +2,27 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 
 	trainmapdb "github.com/rom-vtn/trainmap-db"
 )
 
-// Replace these with your file paths
-const DB_PATH = "/path/to/database.db"
-const CONFIG_PATH = "/path/to/config.json"
-
-func buildDatabase() error {
-	fetcher, err := trainmapdb.NewFetcher(DB_PATH, nil)
-	if err != nil {
-		return err
-	}
-	configFileName := CONFIG_PATH
+func buildDatabase(configFileName string) error {
 	var config trainmapdb.LoaderConfig
+	if configFileName == "" {
+		return fmt.Errorf("no DB file name in config given")
+	}
 	content, err := os.ReadFile(configFileName)
 	if err != nil {
 		return err
 	}
 	err = json.Unmarshal(content, &config)
+	if err != nil {
+		return err
+	}
+	fetcher, err := trainmapdb.NewFetcher(config.DatabasePath, nil)
 	if err != nil {
 		return err
 	}
@@ -36,7 +35,12 @@ func buildDatabase() error {
 }
 
 func main() {
-	err := buildDatabase()
+	if len(os.Args) < 2 {
+		log.Fatal("Syntax: ./main <config_file.json>")
+	}
+	configFileName := os.Args[1]
+	fmt.Println("Reading config file: ", configFileName)
+	err := buildDatabase(configFileName)
 	if err != nil {
 		log.Fatal(err)
 	}
