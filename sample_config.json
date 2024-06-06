@@ -1,0 +1,10 @@
+{
+    "contents": [
+        {
+            "active": true,
+            "db_filename": "/path/to/file.zip [UNUSED FOR NOW]",
+            "display_name": "NAME IN DATABASE GOES HERE",
+            "feed_url": "https://example.com/link_to_feed_download.zip"
+        }
+    ]
+}
