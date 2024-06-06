@@ -2,7 +2,7 @@ module github.com/rom-vtn/trainmap-loader
 
 go 1.22.1
 
-require github.com/rom-vtn/trainmap-db v0.0.0-20240606101803-6cd17392bab7
+require github.com/rom-vtn/trainmap-db v0.0.0-20240606133754-a170e3dcd5fb
 
 require (
 	github.com/jftuga/geodist v1.0.0 // indirect
