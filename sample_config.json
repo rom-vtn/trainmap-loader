@@ -3,8 +3,9 @@
     "contents": [
         {
             "active": true,
-            "db_filename": "/path/to/file.zip [UNUSED FOR NOW]",
-            "display_name": "NAME IN DATABASE GOES HERE",
+            "db_filename": "/path/to/file.zip", //will be used as cache between fetches
+            "fetch_interval_hours": 3, //time in hours between fetches, 0="always fetch", null="never fetch"
+            "display_name": "Surface display name goes here",
             "feed_url": "https://example.com/link_to_feed_download.zip"
         }
     ]
